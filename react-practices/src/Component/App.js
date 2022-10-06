@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const App = (/*{ people }*/) => {
 
@@ -13,7 +13,23 @@ const App = (/*{ people }*/) => {
 
     useEffect(() => {
         console.log(`It's ${emotion} right now `)
-    },[emotion])
+    }, [emotion]);
+
+    const txtTitle = useRef();
+    const hexColor = useRef();
+
+    console.log(txtTitle, hexColor)
+
+    const submit = (e) => {
+        e.preventDefault();
+        const title = txtTitle.current.value;
+        const color = hexColor.current.value;
+        alert(`${title} , ${color}`);
+        txtTitle.current.value = " ";
+        hexColor.current.value = " ";
+    }
+
+
     return (
         <div >
             <h1>
@@ -21,6 +37,12 @@ const App = (/*{ people }*/) => {
             </h1>
             <button onClick={() => setEmotion("sad")}>sad</button>
             <button onClick={() => setEmotion("exited")}>exited</button>
+            <form onSubmit={submit}>
+                <input type="text" placeholder='Color Name...' ref={txtTitle} />
+                <input type="color" ref={hexColor} />
+                <button>Add</button>
+            </form>
+
 
         </div>
     )
