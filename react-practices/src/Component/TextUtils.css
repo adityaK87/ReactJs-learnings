@@ -1,0 +1,21 @@
+.container {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.textArea {
+  border: 2px solid black;
+  width: 881px;
+  height: 236px;
+}
+.btn {
+  margin: 13px;
+  background: #03a9f4e6;
+  padding: 7px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
