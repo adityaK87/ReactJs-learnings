@@ -18,12 +18,18 @@ function TextUtils() {
   const handleReverse = () => {
     let reversText = text.split("").reverse().join(""); //characters reverssed
     // let reversText = text.split(" ").reverse().join(" "); //word to word reverse
-    console.log(reversText);
+    // console.log(reversText);
     setText(reversText);
   };
 
   const handleClear = () => {
     setText("");
+  };
+
+  const handleCopyText = () => {
+    let mytext = document.getElementById("myText");
+    mytext.select();
+    navigator.clipboard.writeText(mytext.value);
   };
 
   const handleOnChange = (event) => {
@@ -37,7 +43,7 @@ function TextUtils() {
         <h1>Type Your Text Here</h1>
         <textarea
           name=""
-          id=""
+          id="myText"
           cols="10"
           rows="5"
           className="textArea"
@@ -52,6 +58,9 @@ function TextUtils() {
           </button>
           <button className="btn btn-lowerCase" onClick={handleLowerCase}>
             Convert to LowerCase
+          </button>
+          <button className="btn btn-copy" onClick={handleCopyText}>
+            Copy
           </button>
           <button className="btn btn-reverse" onClick={handleReverse}>
             Reverse
